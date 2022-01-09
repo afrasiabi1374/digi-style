@@ -1,0 +1,16 @@
+*,*:before,*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+a,a:visited,a:checked{
+  text-decoration: none;
+  color: black;
+}
+@font-face {
+  font-family: iranSans;
+  src: url('fonts/sans/Iranian Sans.ttf');
+}
+*{
+  font-family: iranSans;
+}
