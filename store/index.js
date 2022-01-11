@@ -11,7 +11,7 @@ export const state = () => {
     ],
     cats: [
       {id: 1, name: 'زنانه' , subCat: [
-          {id:1, name: 'لباس',icon: '',child:[
+          {id:1, name: 'لباس',description: 'خرید لباس زنانه',icon: '',child:[
               {id:1, name: 'هودی و سویتشرت زنانه',Pro:[]  },
               {id:2, name: 'پیراهن',Pro:[] },
               {id:3, name: 'شلوار',Pro:[] },
@@ -23,31 +23,29 @@ export const state = () => {
                 require('~/assets/images/festival/woman-clothes/4.jpg'),
                 ]}
             ]},
-          {id:2, name: 'کیف',icon: '',child:[],  festival: [
+          {id:2, name: 'کیف',description: 'خرید کیف زنانه',icon: '',child:[],  festival: [
               {id: 2, name: 'برترین برند کیف  زنانه' ,src:[
-                 require('~/assets/images/festival/woman-clothes/1.jpg'),
-                  require('~/assets/images/festival/woman-clothes/2.jpg'),
-                  require('~/assets/images/festival/woman-clothes/3.jpg'),
-                  require('~/assets/images/festival/woman-clothes/4.jpg'),
+                  require('~/assets/images/festival/woman-bags/1.jpg'),
+                  require('~/assets/images/festival/woman-bags/2.jpg'),
+                  require('~/assets/images/festival/woman-bags/3.jpg'),
+                  require('~/assets/images/festival/woman-bags/4.jpg'),
               ]}
             ]
           },
-          {id:3, name: 'کفش',icon: '',child:[], festival: [] },
-          {id:4, name: 'اکسسوری ورزشی',icon: '',child:[], festival: [] },
-          {id:5, name: 'لباس',icon: '',child:[], festival: [] }
+          {id:3, name: 'کفش',description: 'خرید کفش زنانه',icon: '',child:[], festival: [] },
+          {id:4, name: 'اکسسوری ورزشی',description: 'خرید لوازم ورزشی زنانه',icon: '',child:[], festival: [] },
         ]},
 
 
       {id: 2, name: 'مردانه', subCat: [
-          {id:1, name: 'لباس',icon: '',child:[
+          {id:1, name: 'لباس',description: 'خرید لباس مردانه',icon: '',child:[
               {id:1, name: 'هودی و سویتشرت',Pro:[] },
               {id:2, name: 'پیراهن',Pro:[] },
               {id:3, name: 'شلوار',Pro:[] },
             ] },
-          {id:2, name: 'کیف',icon: '',child:[] },
-          {id:3, name: 'کفش',icon: '',child:[] },
-          {id:4, name: 'اکسسوری ورزشی',icon: '',child:[] },
-          {id:5, name: 'لباس',icon: '',child:[] }
+          {id:2, name: 'کیف',description: 'خرید کیف مردانه',icon: '',child:[] },
+          {id:3, name: 'کفش',description: 'خرید کفش مردانه',icon: '',child:[] },
+          {id:4, name: 'اکسسوری ورزشی',description: 'خرید لوازم ورزشی مردانه',icon: '',child:[] },
         ]
       },
       {id: 3, name: 'بچگانه' , subCat:[]},

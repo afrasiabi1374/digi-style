@@ -25,12 +25,12 @@
           <template v-for="item in subCat">
             <li class="parent-item" :key="item.id" @mouseover="subCatMaker(item,'child')">
               {{item.name}}
-              <img src="../assets/icons/shirt.png" alt="" width="20" height="20">
+              <img src="../assets/icons/shirt.png" alt="" width="20" height="20" class="subcat-icon">
             </li>
           </template>
           <div class="categories">
             <div class="mega-col">
-              <h3 class="mega-link-title">خرید لباس مردانه</h3>
+              <h3 class="mega-link-title">{{subCatDescribe}}</h3>
               <ul v-for="item in child" class="child-wrapper">
                 <li class="mega-link-wrapper" :key="item.id">
                   <nuxt-link to="#">{{item.name}}</nuxt-link>
@@ -38,12 +38,12 @@
               </ul>
             </div>
             <div class="mega-col">
-              <h3>
+              <h3 class="festival-title">
                 {{ festival[0]}}
               </h3>
-              <div class="festival-img" >
+              <div class="festival-img-wrapper" >
                 <template v-for="(item, i) in festival[1]">
-                  <img :src="item" alt="عکس برند" :key="i" width="200px" height="110px">
+                  <img class="festival-img" :src="item" alt="عکس برند" :key="i" width="50%" height="110px">
                 </template>
               </div>
             </div>
@@ -58,6 +58,7 @@
     data(){
       return{
         subCat: '',
+        subCatDescribe: '',
         child: '',
         festival: []
       }
@@ -66,14 +67,16 @@
       subCatMaker(item, type){
         if (type == 'child') {
           this.child = item.child
+          this.subCatDescribe = item.description
           if (item.festival !== undefined){
             this.festival[1] = item.festival[0]?.src
             this.festival[0] = item.festival[0]?.name
-
           }
         }else if(type == 'subCat') {
           this.subCat = item.subCat
           this.child = item.subCat[0]?.child? item.subCat[0].child : ''
+          console.log(this.subCat)
+
         }
       }
     },
@@ -246,7 +249,7 @@
   }
   .categories{
     width: 100vw;
-    height: 70vh;
+    height: 75vh;
     background-color: white;
     position: absolute;
     top: 100%;
@@ -297,6 +300,23 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+  }
+  .festival-img-wrapper{
+    padding-top: 5%;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .festival-img {
+    width: 40%;
+  }
+  .festival-title {
+    text-align: center;
+    float: right;
+    position: relative;
+    right: 25%;
   }
 </style>
 
