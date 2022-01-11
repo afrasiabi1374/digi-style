@@ -38,14 +38,17 @@
               </ul>
             </div>
             <div class="mega-col">
-              <h3 class="festival-title">
-                {{ festival[0]}}
-              </h3>
-              <div class="festival-img-wrapper" >
-                <template v-for="(item, i) in festival[1]">
-                  <img class="festival-img" :src="item" alt="عکس برند" :key="i" width="50%" height="110px">
-                </template>
-              </div>
+              <template v-if="festival[1] && festival[0]">
+                <h3 class="festival-title">
+                  {{ festival[0]}}
+                </h3>
+                <div class="festival-img-wrapper" >
+                  <template v-for="(item, i) in festival[1]">
+                    <img  class="festival-img" :src="item" alt="عکس برند" :key="i" width="50%" height="110px">
+                  </template>
+                </div>
+              </template>
+
             </div>
           </div>
         </ul>
@@ -75,7 +78,21 @@
         }else if(type == 'subCat') {
           this.subCat = item.subCat
           this.child = item.subCat[0]?.child? item.subCat[0].child : ''
-          console.log(this.subCat)
+          //
+          if (item.subCat[0]?.description !== undefined){
+            this.subCatDescribe = item.subCat[0].description
+          }
+
+          console.log(item?.subCat[0]?.festival)
+          if (item?.subCat[0]?.festival !== undefined){
+            this.festival[1] = item?.subCat[0]?.festival[0]?.src
+            this.festival[0] = item?.subCat[0]?.festival[0]?.name
+          }else{
+            this.festival[0] = false
+            this.festival[1] = false
+          }
+
+
 
         }
       }

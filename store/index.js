@@ -32,7 +32,7 @@ export const state = () => {
               ]}
             ]
           },
-          {id:3, name: 'کفش',description: 'خرید کفش زنانه',icon: '',child:[], festival: [] },
+          {id:3, name: 'کفش زنانه',description: 'خرید کفش زنانه',icon: '',child:[], festival: [] },
           {id:4, name: 'اکسسوری ورزشی',description: 'خرید لوازم ورزشی زنانه',icon: '',child:[], festival: [] },
         ]},
 
