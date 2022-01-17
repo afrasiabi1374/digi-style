@@ -34,7 +34,13 @@ export const state = () => {
           },
           {id:3, name: 'کفش زنانه',description: 'خرید کفش زنانه',icon: '',child:[], festival: [] },
           {id:4, name: 'اکسسوری ورزشی',description: 'خرید لوازم ورزشی زنانه',icon: '',child:[], festival: [] },
-        ]},
+        ],
+      tabImage:[
+        require('assets/images/tab/woman-jacket.jpg'),
+        require('assets/images/tab/woman-accesory.jpg'),
+        require('assets/images/tab/woman-shoe.jpg'),
+        require('assets/images/tab/woman-sport-shoe.jpg')
+      ]},
 
 
       {id: 2, name: 'مردانه', subCat: [
@@ -46,10 +52,31 @@ export const state = () => {
           {id:2, name: 'کیف',description: 'خرید کیف مردانه',icon: '',child:[] },
           {id:3, name: 'کفش',description: 'خرید کفش مردانه',icon: '',child:[] },
           {id:4, name: 'اکسسوری ورزشی',description: 'خرید لوازم ورزشی مردانه',icon: '',child:[] },
+        ],
+        tabImage:[
+          require('assets/images/tab/man-jacket.jpg'),
+          require('assets/images/tab/man-accessory.jpg'),
+          require('assets/images/tab/man-shoe.jpg'),
+          require('assets/images/tab/man-sport-shoe.jpg')
         ]
       },
-      {id: 3, name: 'بچگانه' , subCat:[]},
-      {id: 4, name: 'زیبایی وسلامت' , subCat:[]}
+      {id: 3, name: 'بچگانه' , subCat:[],
+        tabImage:[
+          require('assets/images/tab/baby-dorse.jpg'),
+          require('assets/images/tab/baby-boy.jpg'),
+          require('assets/images/tab/baby-girl.jpg'),
+        ]
+      },
+      {id: 4, name: 'زیبایی وسلامت' , subCat:[]
+        ,
+        tabImage:[
+          require('assets/images/tab/beauty-cosmetic.jpg'),
+          require('assets/images/tab/beauty-perfume.jpg'),
+          require('assets/images/tab/beauty-behdashti.jpg'),
+          require('assets/images/tab/beauty-electronic.jpg'),
+          require('assets/images/tab/beauty-tools.png'),
+        ]
+      }
     ]
   }
 }
@@ -60,5 +87,9 @@ export const getters = {
   },
   getCategoryAndProducts(state){
     return state.cats
+  },
+  getTab : (state)=>(tabId)=>{
+    console.log( state.cats.find(item => item.id === tabId))
+    return state.cats.find(item => item.id === tabId)
   }
 }

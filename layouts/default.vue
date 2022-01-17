@@ -3,7 +3,7 @@
     <header>
       <div class="cart-sign">
         <div class="cart">
-          <div class="counter">{{0}}</div>
+          <div class="counter digit">{{0}}</div>
         </div>
         <div class="sign">
           وارد شوید

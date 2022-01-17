@@ -11,6 +11,13 @@ a,a:visited,a:checked{
   font-family: iranSans;
   src: url('fonts/sans/Iranian Sans.ttf');
 }
+@font-face {
+  font-family: vazirFD;
+  src: url('fonts/vazir-fd/Vazir-Bold-FD.ttf');
+}
 *{
   font-family: iranSans;
+}
+.digit{
+  font-family: vazirFD;
 }
