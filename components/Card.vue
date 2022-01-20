@@ -11,22 +11,25 @@
             :minute="29"
             :second="10"
             :millisecond="10"
+            v-if="timer===true"
           />
         </div>
-        <div class="title">پیشنهاد شگفت آویز</div>
+        <div class="title" v-if="timer===true">پیشنهاد شگفت آویز</div>
       </div>
-      <p class="brand">افراتین</p>
+      <p class="brand">{{src.brand}}</p>
       <div class="card-img-wrapper">
-        <img draggable="false" class="card-img" src="~/assets/images/products/cream.jpg" alt="عکس محصول">
+        <img draggable="false" class="card-img" :src="src.image" alt="عکس محصول">
       </div>
       <div class="sale-persent digit">25%</div>
-      <p class="pro-title digit">ماسک صورت ورقه ای سوپر فروت فریمن مدل All skin types حجم 150 میلی لیتر
-      </p>
+      <span class="pro-title digit">{{src.title}}
+      </span>
+
       <p>
           <span class="price digit">
-            50000تومان
+            {{src.price}}
           </span>
       </p>
+
     </div>
   </div>
 </template>
@@ -37,6 +40,10 @@
     components:{
       Timer
     },
+    props:[
+      'src',
+      'timer'
+    ],
     name: 'Card'
   }
 </script>
@@ -44,14 +51,17 @@
 <style scoped>
   .card-wrapper{
     background-color: transparent;
-    height: 88%;
-
+    height: 100%;
+    width: 100%;
   }
   .card{
     width: 90%;
     height: 100%;
     margin: auto;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .time-title{
     display: flex;
@@ -97,10 +107,13 @@
     font-size: 14px;
     font-weight: lighter;
     padding: 2%;
+    direction: rtl;
 
   }
   .price{
     font-size: 16px;
     padding: 2%;
-  }
+    margin-right: auto;
+    text-align: left;
+    }
 </style>

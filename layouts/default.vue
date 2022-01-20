@@ -13,92 +13,99 @@
         <img src="../assets/images/log/indexLogo.svg" alt="logo" width="207" height="34">
         <div class="c-header__seperator"></div>
       </div>
-      <div class="search" >
+      <div class="search">
         <input class="search-input" type="text" placeholder="جستجوی محصولات ">
       </div>
     </header>
-      <nav>
-        <template v-for="item in categoryAndPro">
-          <li  :class="['nav-item', item.subCat.length > 0 ? 'main-parent': '']" :key="item.id"  @mouseover="subCatMaker(item , 'subCat')" >{{ item.name }}</li>
+    <nav>
+      <template v-for="item in categoryAndPro">
+        <li :class="['nav-item', item.subCat.length > 0 ? 'main-parent': '']" :key="item.id"
+            @mouseover="subCatMaker(item , 'subCat')">{{ item.name }}
+        </li>
+      </template>
+      <ul class="parent">
+        <template v-for="item in subCat">
+          <li class="parent-item" :key="item.id" @mouseover="subCatMaker(item,'child')">
+            {{item.name}}
+            <img src="../assets/icons/shirt.png" alt="" width="20" height="20" class="subcat-icon">
+          </li>
         </template>
-        <ul  class="parent"  >
-          <template v-for="item in subCat">
-            <li class="parent-item" :key="item.id" @mouseover="subCatMaker(item,'child')">
-              {{item.name}}
-              <img src="../assets/icons/shirt.png" alt="" width="20" height="20" class="subcat-icon">
-            </li>
-          </template>
-          <div class="categories">
-            <div class="mega-col">
-              <h3 class="mega-link-title">{{subCatDescribe}}</h3>
-              <ul v-for="item in child" class="child-wrapper">
-                <li class="mega-link-wrapper" :key="item.id">
-                  <nuxt-link to="#">{{item.name}}</nuxt-link>
-                </li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <template v-if="festival[1] && festival[0]">
-                <h3 class="festival-title">
-                  {{ festival[0]}}
-                </h3>
-                <div class="festival-img-wrapper" >
-                  <template v-for="(item, i) in festival[1]">
-                    <img  class="festival-img" :src="item" alt="عکس برند" :key="i" width="50%" height="110px">
-                  </template>
-                </div>
-              </template>
-
-            </div>
+        <div class="categories">
+          <div class="mega-col">
+            <h3 class="mega-link-title">{{subCatDescribe}}</h3>
+            <ul v-for="item in child" class="child-wrapper">
+              <li class="mega-link-wrapper" :key="item.id">
+                <nuxt-link to="#">{{item.name}}</nuxt-link>
+              </li>
+            </ul>
           </div>
-        </ul>
-      </nav>
+          <div class="mega-col">
+            <template v-if="festival[1] && festival[0]">
+              <h3 class="festival-title">
+                {{ festival[0]}}
+              </h3>
+              <div class="festival-img-wrapper">
+                <template v-for="(item, i) in festival[1]">
+                  <img class="festival-img" :src="item" alt="عکس برند" :key="i" width="50%" height="110px">
+                </template>
+              </div>
+            </template>
+
+          </div>
+        </div>
+      </ul>
+    </nav>
     <Nuxt/>
+    <footer>
+      <footer-component/>
+    </footer>
   </div>
 </template>
 <script scoped>
+  import FooterComponent from '~/components/FooterComponent'
+
   export default {
-    data(){
-      return{
+    components: { FooterComponent },
+    data() {
+      return {
         subCat: '',
         subCatDescribe: '',
         child: '',
         festival: []
       }
     },
-    methods:{
-      subCatMaker(item, type){
+    methods: {
+      subCatMaker(item, type) {
         if (type == 'child') {
           this.child = item.child
           this.subCatDescribe = item.description
-          if (item.festival !== undefined){
+          if (item.festival !== undefined) {
             this.festival[1] = item.festival[0]?.src
             this.festival[0] = item.festival[0]?.name
           }
-        }else if(type == 'subCat') {
+        } else if (type == 'subCat') {
           this.subCat = item.subCat
-          this.child = item.subCat[0]?.child? item.subCat[0].child : ''
+          this.child = item.subCat[0]?.child ? item.subCat[0].child : ''
           //
-          if (item.subCat[0]?.description !== undefined){
+          if (item.subCat[0]?.description !== undefined) {
             this.subCatDescribe = item.subCat[0].description
           }
 
           console.log(item?.subCat[0]?.festival)
-          if (item?.subCat[0]?.festival !== undefined){
+          if (item?.subCat[0]?.festival !== undefined) {
             this.festival[1] = item?.subCat[0]?.festival[0]?.src
             this.festival[0] = item?.subCat[0]?.festival[0]?.name
-          }else{
+          } else {
             this.festival[0] = false
             this.festival[1] = false
           }
 
 
-
         }
       }
     },
-    computed:{
-      categoryAndPro(){
+    computed: {
+      categoryAndPro() {
         return this.$store.getters.getCategoryAndProducts
       }
     }
@@ -203,7 +210,7 @@
   nav {
     display: flex;
     flex-direction: row-reverse;
-    justify-content:center;
+    justify-content: center;
     width: 100%;
     padding-top: 2%;
     flex-wrap: nowrap;
@@ -231,7 +238,8 @@
     padding: 4px 30px 4px 0;
     text-align: right;
   }
-  .main-parent{
+
+  .main-parent {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -240,7 +248,8 @@
 
 
   }
-  .parent{
+
+  .parent {
     position: absolute;
     top: 100%;
     width: 100vw;
@@ -253,7 +262,8 @@
     font-size: .75rem;
     display: none;
   }
-  .parent-item{
+
+  .parent-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -261,10 +271,12 @@
     cursor: pointer;
     padding: 8px 25px;
   }
+
   .parent-item:hover {
     border-bottom: 3px solid #1bb4d8;
   }
-  .categories{
+
+  .categories {
     width: 100vw;
     height: 75vh;
     background-color: white;
@@ -277,20 +289,24 @@
     padding-top: 5%;
 
   }
-  .nav-item{
+
+  .nav-item {
     padding: 10px 20px;
   }
-  nav .main-parent:hover ~  .parent ,.parent:hover,
+
+  nav .main-parent:hover ~ .parent, .parent:hover,
   nav .main-parent:hover ~ .categories,
-  .parent:hover ~ .categories, .categories:hover{
+  .parent:hover ~ .categories, .categories:hover {
     display: flex;
     transition: all 2s;
   }
+
   .categories:hover + .parent {
     display: flex;
     transition: all 2s;
   }
-  .mega-link-wrapper{
+
+  .mega-link-wrapper {
     text-align: right;
     color: #757575;
     font-size: .812rem;
@@ -306,7 +322,8 @@
     align-items: center;
 
   }
-  .mega-link-title{
+
+  .mega-link-title {
     text-align: right;
     letter-spacing: normal;
     -webkit-transition: all .3s ease-in-out;
@@ -318,7 +335,8 @@
     flex-direction: row-reverse;
     align-items: center;
   }
-  .festival-img-wrapper{
+
+  .festival-img-wrapper {
     padding-top: 5%;
     width: 70%;
     display: flex;
@@ -326,14 +344,25 @@
     flex-wrap: wrap;
     gap: 10px;
   }
+
   .festival-img {
     width: 40%;
   }
+
   .festival-title {
     text-align: center;
     float: right;
     position: relative;
     right: 25%;
+  }
+
+  footer {
+    background-color: transparent;
+    width: 92%;
+    margin: auto;
+    min-height: 50vh;
+    padding-top: 5%;
+    direction: rtl;
   }
 </style>
 

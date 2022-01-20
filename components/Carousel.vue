@@ -1,22 +1,30 @@
 <template>
-  <VueSlickCarousel :arrows="true" v-bind="carouselSettings">
-    <template v-for="(item, i) in 8" >
-      <Card :key="i" />
-    </template>
-  </VueSlickCarousel>
-</template>
+  <div>
+    <VueSlickCarousel :arrows="true" v-bind="carouselSettings">
+      <template v-for="(item, i) in src" >
+        <Card :src="item" :key="i" :timer="timer"/>
+      </template>
+    </VueSlickCarousel>
+  </div>
 
-<script>
+</template>
+<script scoped>
   import VueSlickCarousel from 'vue-slick-carousel'
   import 'vue-slick-carousel/dist/vue-slick-carousel.css'
   // optional style for arrows & dots
   import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+  import '~/assets/SlickSlider/carousel.css'
+
   import Card from  './Card'
   export default {
     components:{
       VueSlickCarousel,
       Card
     },
+    props:[
+      'src',
+      'timer'
+    ],
     data(){
       return{
         carouselSettings: {
@@ -55,8 +63,7 @@
     }
   }
 </script>
-
-<style scoped>
+<style src="~/assets/SlickSlider/carousel.css" scoped>
 
 
 </style>

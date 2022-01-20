@@ -42,7 +42,6 @@ export const state = () => {
         require('assets/images/tab/woman-sport-shoe.jpg')
       ]},
 
-
       {id: 2, name: 'مردانه', subCat: [
           {id:1, name: 'لباس',description: 'خرید لباس مردانه',icon: '',child:[
               {id:1, name: 'هودی و سویتشرت',Pro:[] },

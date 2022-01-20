@@ -1,0 +1,32 @@
+.slick-prev{
+  left: -5%!important;
+  top: 45%!important;
+  z-index: 1000!important;
+  position: absolute!important;
+  width: 5%!important;
+  height: 50px!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-content: center!important;
+
+}
+
+.slick-next{
+  right: -1%!important;
+  top: 45%!important;
+  z-index: 1000!important;
+  position: absolute!important;
+  width: 6%!important;
+  height: 50px!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-content: center!important;
+}
+
+.slick-prev:before {
+  font-size: 1.3em!important;
+  color: black!important;
+}.slick-next:before {
+  font-size: 1.3em!important;
+  color: black!important;
+}

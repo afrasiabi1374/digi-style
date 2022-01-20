@@ -37,7 +37,7 @@
       'hour',
       'minute',
       'second',
-      'millisecond'
+      'millisecond',
     ],
     data() {
       return {

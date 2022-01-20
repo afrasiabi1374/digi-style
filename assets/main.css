@@ -17,7 +17,12 @@ a,a:visited,a:checked{
 }
 *{
   font-family: iranSans;
+
 }
 .digit{
   font-family: vazirFD;
+}
+
+.gray{
+  color: #81858b;
 }
